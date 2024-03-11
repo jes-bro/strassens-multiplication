@@ -377,21 +377,14 @@ class Matrix(private val rowDim: Int, private val colDim: Int, initValue: Int) {
 }
 
 /**
- * Compare the matrix muliplication methods by timing how long matrices of certain lengths take.
- * Print the Needleman Wunsch sequence alignment between two strings of nucleotides.
+ * Compare the matrix muliplication methods by timing how long each takes to finish multiplying matrices of various sizes.
  */
 fun main() {
     val matrix = Matrix(rowDim = 4, colDim = 4, initValue = 0)
-    matrix.setElement(0, 0, 1)
-    matrix.setElement(0, 1, 2)
-    matrix.setElement(1, 0, 3)
-    matrix.setElement(1, 1, 4)
     val matrix1 = mutableListOf(mutableListOf(1, 2, 3, 4), mutableListOf(5, 6, 7, 8),  mutableListOf(9, 10, 11, 12), mutableListOf(13, 14, 15, 16))
     val matrix2 = mutableListOf(mutableListOf(1, 2, 3, 4), mutableListOf(5, 6, 7, 8),  mutableListOf(9, 10, 11, 12), mutableListOf(13, 14, 15, 16))
-    //println(matrix.getCol(0).size)
-    //println(matrix2[0].size)
     val result = matrix.strassensMultiplication(matrix1, matrix2)
-    val sizes = listOf(16, 32, 64, 128, 256, 512, 1024) // You can modify this list based on your needs and time constraints
+    val sizes = listOf(16, 32, 64, 128, 256, 512, 1024)
     for (size in sizes) {
         val matrix1 = MutableList(size) { MutableList(size) { (0..10).random() } }
         val matrix2 = MutableList(size) { MutableList(size) { (0..10).random() } }
